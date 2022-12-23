@@ -39,7 +39,7 @@ export async function sendGmail(subject, htmlTemplate) {
             subject,
             htmlTemplate
         );
-        
+
         await transporter.sendMail(mailOptions);
         logger.info(`Email sent`)
     } catch (error) {

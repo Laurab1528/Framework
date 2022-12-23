@@ -17,7 +17,7 @@ export class ProductoService extends BaseDao{
         ProductoService.instance = this;
         return this;
     }
-    
+
     static async exists(id) {
         try {
             return await ProductosModel.findById(id);
@@ -34,7 +34,7 @@ export class ProductoService extends BaseDao{
             return false;
         }
     }
-    
+
     async getProductById(id) {
         try {
             const product = await ProductosModel.findById(id);
@@ -44,7 +44,7 @@ export class ProductoService extends BaseDao{
             return false;
         }
     }
-    
+
     async create(object) {
         try {
             return await ProductosModel.create(object)
@@ -53,7 +53,7 @@ export class ProductoService extends BaseDao{
             return false;
         }
     }
-    
+
     async updateProductById(id, object) {
         try {
             await ProductosModel.findByIdAndUpdate(
@@ -70,7 +70,7 @@ export class ProductoService extends BaseDao{
             return false;
         }
     }
-    
+
     async deleteById(id) {
         try {
             return await ProductosModel.findByIdAndDelete({[this.ID_FIELD]: id})
@@ -79,5 +79,5 @@ export class ProductoService extends BaseDao{
             return false;
         }
     }
-    
+
 }

@@ -18,7 +18,7 @@ export class UsuarioService {
         UsuarioService.instance = this;
         return this;
     }
-    
+
     async createUser(object) {
         try {
             return await UsuariosModel.create(object);
@@ -27,20 +27,20 @@ export class UsuarioService {
             return null;
         }
     }
-    
+
     async loginUser(object) {
         try {
             const user = await UsuariosModel.findOne({
                 [this.USERNAME_FIELD] : object.username
             });
-            
+
             if (!user) {
                 logger.info(`User '${object.username}' does not exist`)
                 return null;   
             } 
-            
+
             return await user.comparePassword(object.password);
-        
+
         } catch (error) {
             logger.error(error);
             return null;
